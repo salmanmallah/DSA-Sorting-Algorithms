@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block body %}
+     
+  <div class="container py-5">      
+    <form class="row g-3 align-items-center">
+
+        <div class="col-md-4">
+            <label for="algo1" class="form-label">Select Algo 1</label>
+            <select id="algo1" name="Algo1" class="form-select">
+                <option value="1">Bubble Sort</option>
+                <option value="2">Selection Sort</option> 
+                <option value="3">Insertion Sort</option>
+                <option value="4">Merge Sort</option>
+                <option value="5">Quicksort</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="algo2" class="form-label">Select Algo 2</label>
+            <select id="algo2" name="Algo2" class="form-select">
+                <option value="1">Bubble Sort</option>
+                <option value="2">Selection Sort</option> 
+                <option value="3">Insertion Sort</option>
+                <option value="4">Merge Sort</option>
+                <option value="5">Quicksort</option>
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label for="length" class="form-label">Array length:</label>
+            <div class="input-group">
+                <input type="number" id="length" name="length" class="form-control" value="{{ length }}">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary" style="background-color: #04AA6D; border-color: #04AA6D;">Sort</button>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="container   py-2 mb-5">
+  <!-- code for chart.js -->
+  <div class="chart-container">
+    <canvas id="sortingTimesChart"></canvas>
+  </div>
+  
+</div>
+  <div class="container d-flex flex-wrap justify-content-between">  <div class="card mb-3 w-50" id="sorting_algos_output_left">
+      <div class="card-header ">
+        <h2>{{ algo_one_name }}</h2>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Sorting time: {{ bubble_time }}</h5>
+        <hr />
+        <ul class="list-group list-group-flush">
+          {% for num in arr %}
+            <li class="list-group-item">{{ num }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="card mb-3 w-50" id="sorting_algos_output_right">
+      <div class="card-header">
+        <h2>{{ algo_two_name }}</h2>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Sorting time: {{ combination_time }}</h5>
+        <hr />
+        <ul class="list-group list-group-flush">
+          {% for num in without_sorted %}
+            <li class="list-group-item">{{ num }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script>   
+    const ctx = document.getElementById('sortingTimesChart').getContext('2d');
+    const data = {
+      labels: ['{{ algo_one_name }}', '{{ algo_two_name }}'],
+      datasets: [{
+        label: 'Sorting Time (ms)',
+        data: [{{ bubble_time }}, {{ combination_time }}],
+        backgroundColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)'
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)'
+        ],
+        borderWidth: 5
+      }]
+    };
+    const config = {
+      label:"time",
+      type: 'bar',
+      data: data,
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            fontSize: 50
+          }
+        }
+      }
+    };
+
+    new Chart(ctx, config);
+</script>
+{% endblock%}

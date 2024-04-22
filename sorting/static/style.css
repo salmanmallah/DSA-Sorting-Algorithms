@@ -1,0 +1,66 @@
+body {
+  /* font-family: 'More Sugar Thin', sans-serif; */
+  font-family: GillSans, Calibri, Trebuchet, sans-serif;
+  background-color: #1d2a35 !important;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  color: #04AA6D;
+  margin: 0 20px !important;
+}
+
+#mynavbar{
+  background-color:#04AA6D !important;
+  
+}
+
+#sorting_algos_output_left{
+  width: 48% !important;
+  margin-right: 4%;
+}
+#sorting_algos_output_right{
+  width: 48% !important;
+}
+
+
+h1, h2, h3, h4, h5, h6, p, li {
+  color: #04AA6D !important;
+}
+
+h1, h2 {
+  color: white;
+}
+
+form {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+input[type=number] {
+  /* width: 50px; */
+  padding: 5px;
+}
+
+button[type=submit] {
+  background-color: white;
+  color: #1d2a35;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  margin-bottom: 5px;
+  color: white;
+}
